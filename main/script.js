@@ -1,6 +1,5 @@
-// fonction pour afficher les 12 premier personnages de la liste au lancement de la page et créer les cartes dans mon html//
+// fonction pour afficher les 12 premiers personnages de la liste au lancement de la page et créer les cartes dans mon html//
 function getCharacters(done) {
-
     const results = fetch("https://rickandmortyapi.com/api/character");
 
     results
@@ -10,29 +9,73 @@ function getCharacters(done) {
         });
 }
 
-getCharacters(data => {
-    console.log(data);
-    data.results.slice(0, 12).forEach(personnage => {
+document.addEventListener('DOMContentLoaded', () => {
+    getCharacters(data => {
+        console.log(data);
+        data.results.slice(0, 12).forEach(personnage => {
+            const article = document.createElement('article');
+            article.classList.add('carte');
 
-        const article = document.createRange().createContextualFragment(/*html*/`
-        <article>
+            article.innerHTML = `
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="personnage">      
+                </div>
+                <h2>${personnage.name}</h2>
+                <span>${personnage.status}</span>
+                <span>${personnage.gender}</span>
+                <span>${personnage.species}</span>
+            `;
 
-          <div class="image-container">  
-             <img src="${personnage.image}" alt="personnage">      
-          </div>
+            const main = document.querySelector("main");
+            main.appendChild(article);
 
-          <h2>${personnage.name}</h2>
-          <span>${personnage.status}</span>
+            // Ajout de la logique pour le modal
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="image-container">  
+                        <img src="${personnage.image}" alt="personnage">      
+                    </div>
+                    <h2>${personnage.name}</h2>
+                    <span>${personnage.origin.name}</span>
+                    <span>${personnage.location.name}</span>
+                    <span>${personnage.episode.name}</span>
+                    <span class="close">&times;</span>
+                </div>
+            `;
+            article.appendChild(modal);
+        });
 
-        </article>
-        
-        `);
+        // Logique d'ouverture/fermeture du modal
+        const openModalBtns = document.querySelectorAll('.carte');
+        const closeBtns = document.querySelectorAll('.close');
 
-          const main = document.querySelector("main");
-          main.append(article)
+        openModalBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const modals = document.querySelectorAll('.modal');
+                modals[index].style.display = 'block';
+            });
+        });
+
+        closeBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const modals = document.querySelectorAll('.modal');
+                modals[index].style.display = 'none';
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
     });
-
 });
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -74,17 +117,51 @@ function handleRandomCharactersButtonClick() {
         console.log(data);
 
         data.forEach(personnage => {
-            const article = document.createRange().createContextualFragment(/*html*/`
-                <article>
+            const article = document.createElement('article');
+            article.classList.add('carte'); // Ajoutez la classe carte à l'article
+
+            const articleContent = document.createRange().createContextualFragment(/*html*/`
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="${personnage.name}">      
+                </div>
+                <h2>${personnage.name}</h2>
+                <span>${personnage.status}</span>
+            `);
+            article.appendChild(articleContent);
+            main.appendChild(article);
+
+            // Créer le modal
+            const modal = document.createElement('div');
+            modal.classList.add('modal'); // Ajoutez la classe modal au modal
+            modal.innerHTML = `
+                <div class="modal-content">
                     <div class="image-container">  
-                        <img src="${personnage.image}" alt="${personnage.name}">      
+                        <img src="${personnage.image}" alt="personnage">      
                     </div>
                     <h2>${personnage.name}</h2>
-                    <span>${personnage.status}</span>
-                </article>
-            `);
+                    <span>${personnage.origin.name}</span>
+                    <span>${personnage.location.name}</span>
+                    <span>${personnage.episode.name}</span>
+                    <span class="close">&times;</span>
+                </div>
+            `;
+            main.appendChild(modal);
 
-            main.append(article);
+            // Logique d'ouverture/fermeture du modal
+            article.addEventListener('click', () => {
+                modal.style.display = 'block';
+            });
+
+            const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
     });
 }
@@ -137,17 +214,51 @@ function handleRandomAliveCharactersButtonClick() {
         console.log(data);
 
         data.forEach(personnage => {
-            const article = document.createRange().createContextualFragment(/*html*/`
-                <article>
+            const article = document.createElement('article');
+            article.classList.add('carte'); // Ajoutez la classe carte à l'article
+
+            const articleContent = document.createRange().createContextualFragment(/*html*/`
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="${personnage.name}">      
+                </div>
+                <h2>${personnage.name}</h2>
+                <span>${personnage.status}</span>
+            `);
+            article.appendChild(articleContent);
+            main.appendChild(article);
+
+            // Créer le modal
+            const modal = document.createElement('div');
+            modal.classList.add('modal'); // Ajoutez la classe modal au modal
+            modal.innerHTML = `
+                <div class="modal-content">
                     <div class="image-container">  
-                        <img src="${personnage.image}" alt="${personnage.name}">      
+                        <img src="${personnage.image}" alt="personnage">      
                     </div>
                     <h2>${personnage.name}</h2>
-                    <span>${personnage.status}</span>
-                </article>
-            `);
+                    <span>${personnage.origin.name}</span>
+                    <span>${personnage.location.name}</span>
+                    <span>${personnage.episode.name}</span>
+                    <span class="close">&times;</span>
+                </div>
+            `;
+            main.appendChild(modal);
 
-            main.append(article);
+            // Logique d'ouverture/fermeture du modal
+            article.addEventListener('click', () => {
+                modal.style.display = 'block';
+            });
+
+            const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
     });
 }
@@ -200,17 +311,51 @@ function handleRandomDeadCharactersButtonClick() {
         console.log(data);
 
         data.forEach(personnage => {
-            const article = document.createRange().createContextualFragment(/*html*/`
-                <article>
+            const article = document.createElement('article');
+            article.classList.add('carte'); // Ajoutez la classe carte à l'article
+
+            const articleContent = document.createRange().createContextualFragment(/*html*/`
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="${personnage.name}">      
+                </div>
+                <h2>${personnage.name}</h2>
+                <span>${personnage.status}</span>
+            `);
+            article.appendChild(articleContent);
+            main.appendChild(article);
+
+            // Créer le modal
+            const modal = document.createElement('div');
+            modal.classList.add('modal'); // Ajoutez la classe modal au modal
+            modal.innerHTML = `
+                <div class="modal-content">
                     <div class="image-container">  
-                        <img src="${personnage.image}" alt="${personnage.name}">      
+                        <img src="${personnage.image}" alt="personnage">      
                     </div>
                     <h2>${personnage.name}</h2>
-                    <span>${personnage.status}</span>
-                </article>
-            `);
+                    <span>${personnage.origin.name}</span>
+                    <span>${personnage.location.name}</span>
+                    <span>${personnage.episode.name}</span>
+                    <span class="close">&times;</span>
+                </div>
+            `;
+            main.appendChild(modal);
 
-            main.append(article);
+            // Logique d'ouverture/fermeture du modal
+            article.addEventListener('click', () => {
+                modal.style.display = 'block';
+            });
+
+            const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
     });
 }
@@ -263,20 +408,81 @@ function handleRandomUnknownCharactersButtonClick() {
         console.log(data);
 
         data.forEach(personnage => {
-            const article = document.createRange().createContextualFragment(/*html*/`
-                <article>
+            const article = document.createElement('article');
+            article.classList.add('carte'); // Ajoutez la classe carte à l'article
+
+            const articleContent = document.createRange().createContextualFragment(/*html*/`
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="${personnage.name}">      
+                </div>
+                <h2>${personnage.name}</h2>
+                <span>${personnage.status}</span>
+            `);
+            article.appendChild(articleContent);
+            main.appendChild(article);
+
+            // Créer le modal
+            const modal = document.createElement('div');
+            modal.classList.add('modal'); // Ajoutez la classe modal au modal
+            modal.innerHTML = `
+                <div class="modal-content">
                     <div class="image-container">  
-                        <img src="${personnage.image}" alt="${personnage.name}">      
+                        <img src="${personnage.image}" alt="personnage">      
                     </div>
                     <h2>${personnage.name}</h2>
-                    <span>${personnage.status}</span>
-                </article>
-            `);
+                    <span>${personnage.origin.name}</span>
+                    <span>${personnage.location.name}</span>
+                    <span>${personnage.episode.name}</span>
+                    <span class="close">&times;</span>
+                </div>
+            `;
+            main.appendChild(modal);
 
-            main.append(article);
+            // Logique d'ouverture/fermeture du modal
+            article.addEventListener('click', () => {
+                modal.style.display = 'block';
+            });
+
+            const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
     });
 }
 
 const randomUnknownCharactersButton = document.getElementById("randomUnknownCharactersButton");
 randomUnknownCharactersButton.addEventListener("click", handleRandomUnknownCharactersButtonClick);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementsByClassName('modal')[0]; // Assuming there's only one modal
+    const openModalBtns = document.getElementsByClassName('carte');
+    const closeModalBtn = document.getElementsByClassName('close')[0];
+  
+    // Add event listeners to each open modal button
+    for (let i = 0; i < openModalBtns.length; i++) {
+      openModalBtns[i].addEventListener('click', () => {
+        modal.style.display = 'block';
+      });
+    }
+  
+    if (closeModalBtn) { // Check if closeModalBtn is not undefined
+      closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+    }
+  
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  });
