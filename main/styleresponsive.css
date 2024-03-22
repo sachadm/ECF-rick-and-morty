@@ -1,15 +1,81 @@
-@media only screen and (max-width: 430px) {
-    .title {
-        color: rgb(238, 0, 0);
+@media only screen and (max-width: 1500px) {
+    .zone-carte {
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr)); /* Adjust to fit as many columns as possible with a minimum of 20% width */
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .zone-carte {
+        grid-template-columns: repeat(auto-fit, minmax(25%, 1fr)); /* Adjust to fit as many columns as possible with a minimum of 25% width */
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .zone-carte {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .zone-carte {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .zone-carte {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .zone-carte {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .zone-carte {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+    }
+    
+    .btn {
         font-size: 2rem;
-        display: flex;
-        justify-content: space-evenly;
-        margin: 1rem;
-      }
+    }
 }
 
-body {
+@media only screen and (max-width: 650px) {
+    .btn {
+        font-size: 2rem;
+    }
+    .title {
+        font-size: 4rem;
+    }
+}
 
+@media only screen and (max-width: 600px) {
+    .zone-carte {
+        grid-template-columns: repeat(1, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .title {
+        font-size: 3rem;
+        }
+}
+
+@media only screen and (max-width: 425px) {
+    .zone-carte {
+        grid-template-columns: repeat(1, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+    }
 }
 
 
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+@media only screen and (max-width: 1000px) {
+    .nav-bar {
+        justify-content: flex-start;
+        }
+}

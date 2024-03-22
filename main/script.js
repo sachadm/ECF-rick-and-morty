@@ -20,10 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="image-container">  
                     <img src="${personnage.image}" alt="personnage">      
                 </div>
-                <h2>${personnage.name}</h2>
-                <span>${personnage.status}</span>
-                <span>${personnage.gender}</span>
-                <span>${personnage.species}</span>
+                <div class="name">
+                    <h2>${personnage.name}</h2>
+                </div>
+                <div class="stat">
+                    <span>status : ${personnage.status}</span>
+                    <span>gender : ${personnage.gender}</span>
+                    <span>species :${personnage.species}</span>
+                </div>
             `;
 
             const main = document.querySelector("main");
@@ -33,15 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const modal = document.createElement('div');
             modal.classList.add('modal');
             modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="image-container">  
-                        <img src="${personnage.image}" alt="personnage">      
+                <div class="wrapper">
+                    <div class="modal-content">
+                        <div class="image-container">  
+                            <img src="${personnage.image}" alt="personnage">      
+                        </div>
+                        <h2>${personnage.name}</h2>
+                        <div class="stat-modale">
+                         <span>origin : ${personnage.origin.name}</span>
+                         <span>location : ${personnage.location.name}</span>
+                         <span>episodes : ${personnage.episode.length}</span>
+                         <span class="close">&times;</span>
+                        </div>
                     </div>
-                    <h2>${personnage.name}</h2>
-                    <span>${personnage.origin.name}</span>
-                    <span>${personnage.location.name}</span>
-                    <span>${personnage.episode.name}</span>
-                    <span class="close">&times;</span>
                 </div>
             `;
             article.appendChild(modal);
@@ -53,15 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         openModalBtns.forEach((btn, index) => {
             btn.addEventListener('click', () => {
-                const modals = document.querySelectorAll('.modal');
-                modals[index].style.display = 'block';
+                const modal = btn.querySelector('.modal');
+                modal.style.display = 'flex';
+                modal.style.justifyContent = 'center';
             });
         });
 
-        closeBtns.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                const modals = document.querySelectorAll('.modal');
-                modals[index].style.display = 'none';
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', (event) => {
+                const modal = btn.closest('.modal');
+                modal.style.display = 'none';
+                event.stopPropagation(); // Empêche la propagation de l'événement click sur le modal parent
             });
         });
 
@@ -75,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -125,7 +134,11 @@ function handleRandomCharactersButtonClick() {
                     <img src="${personnage.image}" alt="${personnage.name}">      
                 </div>
                 <h2>${personnage.name}</h2>
-                <span>${personnage.status}</span>
+                <div class="stat">
+                    <span>status : ${personnage.status}</span>
+                    <span>gender : ${personnage.gender}</span>
+                    <span>species :${personnage.species}</span>
+                </div>
             `);
             article.appendChild(articleContent);
             main.appendChild(article);
@@ -134,22 +147,27 @@ function handleRandomCharactersButtonClick() {
             const modal = document.createElement('div');
             modal.classList.add('modal'); // Ajoutez la classe modal au modal
             modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="image-container">  
-                        <img src="${personnage.image}" alt="personnage">      
-                    </div>
-                    <h2>${personnage.name}</h2>
-                    <span>${personnage.origin.name}</span>
-                    <span>${personnage.location.name}</span>
-                    <span>${personnage.episode.name}</span>
-                    <span class="close">&times;</span>
+            <div class="wrapper">
+            <div class="modal-content">
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="personnage">      
+                        </div>
+                         <h2>${personnage.name}</h2>
+                         <div class="stat-modale">
+                         <span>origin : ${personnage.origin.name}</span>
+                         <span>location : ${personnage.location.name}</span>
+                         <span>episodes : ${personnage.episode.length}</span>
+                         <span class="close">&times;</span>
+                        </div>
                 </div>
+          <div>
             `;
             main.appendChild(modal);
 
             // Logique d'ouverture/fermeture du modal
             article.addEventListener('click', () => {
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
+                modal.style.justifyContent = 'center';
             });
 
             const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
@@ -222,7 +240,11 @@ function handleRandomAliveCharactersButtonClick() {
                     <img src="${personnage.image}" alt="${personnage.name}">      
                 </div>
                 <h2>${personnage.name}</h2>
-                <span>${personnage.status}</span>
+                <div class="stat">
+                    <span>status : ${personnage.status}</span>
+                    <span>gender : ${personnage.gender}</span>
+                    <span>species :${personnage.species}</span>
+                </div>
             `);
             article.appendChild(articleContent);
             main.appendChild(article);
@@ -231,22 +253,27 @@ function handleRandomAliveCharactersButtonClick() {
             const modal = document.createElement('div');
             modal.classList.add('modal'); // Ajoutez la classe modal au modal
             modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="image-container">  
-                        <img src="${personnage.image}" alt="personnage">      
-                    </div>
-                    <h2>${personnage.name}</h2>
-                    <span>${personnage.origin.name}</span>
-                    <span>${personnage.location.name}</span>
-                    <span>${personnage.episode.name}</span>
-                    <span class="close">&times;</span>
+            <div class="wrapper">
+            <div class="modal-content">
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="personnage">      
+                        </div>
+                         <h2>${personnage.name}</h2>
+                         <div class="stat-modale">
+                         <span>origin : ${personnage.origin.name}</span>
+                         <span>location : ${personnage.location.name}</span>
+                         <span>episodes : ${personnage.episode.length}</span>
+                         <span class="close">&times;</span>
+                        </div>
                 </div>
+          <div>
             `;
             main.appendChild(modal);
 
             // Logique d'ouverture/fermeture du modal
             article.addEventListener('click', () => {
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
+                modal.style.justifyContent = 'center';
             });
 
             const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
@@ -319,7 +346,11 @@ function handleRandomDeadCharactersButtonClick() {
                     <img src="${personnage.image}" alt="${personnage.name}">      
                 </div>
                 <h2>${personnage.name}</h2>
-                <span>${personnage.status}</span>
+                <div class="stat">
+                 <span>status : ${personnage.status}</span>
+                 <span>gender : ${personnage.gender}</span>
+                 <span>species :${personnage.species}</span>
+                </div>
             `);
             article.appendChild(articleContent);
             main.appendChild(article);
@@ -328,22 +359,27 @@ function handleRandomDeadCharactersButtonClick() {
             const modal = document.createElement('div');
             modal.classList.add('modal'); // Ajoutez la classe modal au modal
             modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="image-container">  
-                        <img src="${personnage.image}" alt="personnage">      
-                    </div>
-                    <h2>${personnage.name}</h2>
-                    <span>${personnage.origin.name}</span>
-                    <span>${personnage.location.name}</span>
-                    <span>${personnage.episode.name}</span>
-                    <span class="close">&times;</span>
+            <div class="wrapper">
+            <div class="modal-content">
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="personnage">      
+                        </div>
+                         <h2>${personnage.name}</h2>
+                         <div class="stat-modale">
+                         <span>origin : ${personnage.origin.name}</span>
+                         <span>location : ${personnage.location.name}</span>
+                         <span>episodes : ${personnage.episode.length}</span>
+                         <span class="close">&times;</span>
+                        </div>
                 </div>
+          <div>
             `;
             main.appendChild(modal);
 
             // Logique d'ouverture/fermeture du modal
             article.addEventListener('click', () => {
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
+                modal.style.justifyContent = 'center';
             });
 
             const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
@@ -404,7 +440,7 @@ function handleRandomUnknownCharactersButtonClick() {
     const main = document.querySelector("main");
     main.innerHTML = '';
 
-    getRandomUnknownCharacters(data => {
+    getRandomDeadCharacters(data => {
         console.log(data);
 
         data.forEach(personnage => {
@@ -416,7 +452,11 @@ function handleRandomUnknownCharactersButtonClick() {
                     <img src="${personnage.image}" alt="${personnage.name}">      
                 </div>
                 <h2>${personnage.name}</h2>
-                <span>${personnage.status}</span>
+                <div class="stat">
+                 <span>status : ${personnage.status}</span>
+                 <span>gender : ${personnage.gender}</span>
+                 <span>species :${personnage.species}</span>
+                </div>
             `);
             article.appendChild(articleContent);
             main.appendChild(article);
@@ -425,22 +465,27 @@ function handleRandomUnknownCharactersButtonClick() {
             const modal = document.createElement('div');
             modal.classList.add('modal'); // Ajoutez la classe modal au modal
             modal.innerHTML = `
-                <div class="modal-content">
-                    <div class="image-container">  
-                        <img src="${personnage.image}" alt="personnage">      
-                    </div>
-                    <h2>${personnage.name}</h2>
-                    <span>${personnage.origin.name}</span>
-                    <span>${personnage.location.name}</span>
-                    <span>${personnage.episode.name}</span>
-                    <span class="close">&times;</span>
+            <div class="wrapper">
+            <div class="modal-content">
+                <div class="image-container">  
+                    <img src="${personnage.image}" alt="personnage">      
+                        </div>
+                         <h2>${personnage.name}</h2>
+                         <div class="stat-modale">
+                         <span>origin : ${personnage.origin.name}</span>
+                         <span>location :${personnage.location.name}</span>
+                         <span>episodes : ${personnage.episode.length}</span>
+                         <span class="close">&times;</span>
+                        </div>
                 </div>
+          <div>
             `;
             main.appendChild(modal);
 
             // Logique d'ouverture/fermeture du modal
             article.addEventListener('click', () => {
-                modal.style.display = 'block';
+                modal.style.display = 'flex';
+                modal.style.justifyContent = 'center';
             });
 
             const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
@@ -462,27 +507,3 @@ randomUnknownCharactersButton.addEventListener("click", handleRandomUnknownChara
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementsByClassName('modal')[0]; // Assuming there's only one modal
-    const openModalBtns = document.getElementsByClassName('carte');
-    const closeModalBtn = document.getElementsByClassName('close')[0];
-  
-    // Add event listeners to each open modal button
-    for (let i = 0; i < openModalBtns.length; i++) {
-      openModalBtns[i].addEventListener('click', () => {
-        modal.style.display = 'block';
-      });
-    }
-  
-    if (closeModalBtn) { // Check if closeModalBtn is not undefined
-      closeModalBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-      });
-    }
-  
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-  });
