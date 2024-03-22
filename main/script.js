@@ -440,7 +440,7 @@ function handleRandomUnknownCharactersButtonClick() {
     const main = document.querySelector("main");
     main.innerHTML = '';
 
-    getRandomDeadCharacters(data => {
+    getRandomUnknownCharacters(data => {
         console.log(data);
 
         data.forEach(personnage => {
