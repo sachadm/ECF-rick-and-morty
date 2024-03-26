@@ -88,33 +88,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// fonction pour afficher 12 personnages aléatoire //
 async function getRandomCharacters(done) {
     const totalCharacters = 826; // Nombre total de personnages dans l'API
-    const charactersPerPage = 12; // Nombre de personnages par page dans l'API
+    const charactersPerPage = 20; // Nombre de personnages par page dans l'API
     const totalPages = 42; // Nombre total de pages
 
-    const randomPage = Math.floor(Math.random() * totalPages) + 1; // Sélectionne une page aléatoire
+    // Liste pour stocker tous les personnages
+    let allCharacters = [];
 
-    try {
-        const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${randomPage}`);
-        const data = await response.json();
-        const allCharacters = data.results;
-
-        // Sélectionne aléatoirement 12 personnages parmi ceux de la page sélectionnée
-        const selectedCharacters = [];
-        while (selectedCharacters.length < 12) {
-            const randomIndex = Math.floor(Math.random() * allCharacters.length);
-            const randomCharacter = allCharacters[randomIndex];
-            if (!selectedCharacters.some(character => character.id === randomCharacter.id)) {
-                selectedCharacters.push(randomCharacter);
-            }
+    // Parcourir toutes les pages
+    for (let page = 1; page <= totalPages; page++) {
+        try {
+            const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`);
+            const data = await response.json();
+            allCharacters = allCharacters.concat(data.results); // Ajouter les personnages de la page à la liste
+        } catch (error) {
+            console.error("Une erreur s'est produite lors de la récupération des personnages de la page", page, ":", error);
         }
-
-        done(selectedCharacters);
-    } catch (error) {
-        console.error("Une erreur s'est produite lors de la récupération des personnages :", error);
     }
+
+    // Sélectionner aléatoirement 12 personnages parmi tous les personnages récupérés
+    const selectedCharacters = [];
+    while (selectedCharacters.length < 12 && allCharacters.length > 0) {
+        const randomIndex = Math.floor(Math.random() * allCharacters.length);
+        const randomCharacter = allCharacters.splice(randomIndex, 1)[0]; // Retirer le personnage sélectionné de la liste
+        selectedCharacters.push(randomCharacter);
+    }
+
+    done(selectedCharacters);
 }
 
 // fonction pour créer les cartes dans mon html//
