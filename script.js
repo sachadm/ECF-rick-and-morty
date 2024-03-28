@@ -52,36 +52,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
-            article.appendChild(modal);
-        });
+            main.appendChild(modal); // Ajout du modal à la fin de main
 
-        // Logique d'ouverture/fermeture du modal
-        const openModalBtns = document.querySelectorAll('.carte');
-        const closeBtns = document.querySelectorAll('.close');
+            // Logique d'ouverture/fermeture du modal
+            const openModalBtn = article;
+            const closeModalBtn = modal.querySelector('.close');
 
-        openModalBtns.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                const modal = btn.querySelector('.modal');
+            openModalBtn.addEventListener('click', () => {
                 modal.style.display = 'flex';
                 modal.style.justifyContent = 'center';
             });
-        });
 
-        closeBtns.forEach(btn => {
-            btn.addEventListener('click', (event) => {
-                const modal = btn.closest('.modal');
+            closeModalBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
-                event.stopPropagation(); // Empêche la propagation de l'événement click sur le modal parent
             });
-        });
 
-        window.addEventListener('click', (event) => {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
+            // Fermer le modal en cliquant en dehors
+            const modalbox = document.querySelectorAll('.modal'); // Assuming modal is a single element
+
+            modalbox.forEach(modal => {
+                modal.addEventListener('click', closeModal);
             });
+
+            function closeModal(event) {
+                // Access the modal that was clicked
+                const clickedModal = event.currentTarget;
+
+                // Hide the clicked modal
+                clickedModal.style.display = 'none';
+            }
         });
     });
 });
@@ -166,24 +165,37 @@ function handleRandomCharactersButtonClick() {
             main.appendChild(modal);
 
             // Logique d'ouverture/fermeture du modal
-            article.addEventListener('click', () => {
+            const openModalBtn = article;
+            const closeModalBtn = modal.querySelector('.close');
+
+            openModalBtn.addEventListener('click', () => {
                 modal.style.display = 'flex';
                 modal.style.justifyContent = 'center';
             });
 
-            const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
-            closeBtn.addEventListener('click', () => {
+            closeModalBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
             });
 
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
+            // Fermer le modal en cliquant en dehors
+            const modalbox = document.querySelectorAll('.modal'); // Assuming modal is a single element
+
+            modalbox.forEach(modal => {
+                modal.addEventListener('click', closeModal);
             });
+
+            function closeModal(event) {
+                // Access the modal that was clicked
+                const clickedModal = event.currentTarget;
+
+                // Hide the clicked modal
+                clickedModal.style.display = 'none';
+            }
         });
     });
-}
+};
+    
+
 
 const randomCharactersButton = document.getElementById("randomCharactersButton");
 randomCharactersButton.addEventListener("click", handleRandomCharactersButtonClick);
@@ -272,21 +284,32 @@ function handleRandomAliveCharactersButtonClick() {
             main.appendChild(modal);
 
             // Logique d'ouverture/fermeture du modal
-            article.addEventListener('click', () => {
+            const openModalBtn = article;
+            const closeModalBtn = modal.querySelector('.close');
+
+            openModalBtn.addEventListener('click', () => {
                 modal.style.display = 'flex';
                 modal.style.justifyContent = 'center';
             });
 
-            const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
-            closeBtn.addEventListener('click', () => {
+            closeModalBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
             });
 
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
+            // Fermer le modal en cliquant en dehors
+            const modalbox = document.querySelectorAll('.modal'); // Assuming modal is a single element
+
+            modalbox.forEach(modal => {
+                modal.addEventListener('click', closeModal);
             });
+
+            function closeModal(event) {
+                // Access the modal that was clicked
+                const clickedModal = event.currentTarget;
+
+                // Hide the clicked modal
+                clickedModal.style.display = 'none';
+            }
         });
     });
 }
@@ -378,21 +401,32 @@ function handleRandomDeadCharactersButtonClick() {
             main.appendChild(modal);
 
             // Logique d'ouverture/fermeture du modal
-            article.addEventListener('click', () => {
+            const openModalBtn = article;
+            const closeModalBtn = modal.querySelector('.close');
+
+            openModalBtn.addEventListener('click', () => {
                 modal.style.display = 'flex';
                 modal.style.justifyContent = 'center';
             });
 
-            const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
-            closeBtn.addEventListener('click', () => {
+            closeModalBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
             });
 
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
+            // Fermer le modal en cliquant en dehors
+            const modalbox = document.querySelectorAll('.modal'); // Assuming modal is a single element
+
+            modalbox.forEach(modal => {
+                modal.addEventListener('click', closeModal);
             });
+
+            function closeModal(event) {
+                // Access the modal that was clicked
+                const clickedModal = event.currentTarget;
+
+                // Hide the clicked modal
+                clickedModal.style.display = 'none';
+            }
         });
     });
 }
@@ -484,21 +518,32 @@ function handleRandomUnknownCharactersButtonClick() {
             main.appendChild(modal);
 
             // Logique d'ouverture/fermeture du modal
-            article.addEventListener('click', () => {
+            const openModalBtn = article;
+            const closeModalBtn = modal.querySelector('.close');
+
+            openModalBtn.addEventListener('click', () => {
                 modal.style.display = 'flex';
                 modal.style.justifyContent = 'center';
             });
 
-            const closeBtn = modal.querySelector('.close'); // Sélecteur unique pour le bouton de fermeture
-            closeBtn.addEventListener('click', () => {
+            closeModalBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
             });
 
-            window.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
+            // Fermer le modal en cliquant en dehors
+            const modalbox = document.querySelectorAll('.modal'); // Assuming modal is a single element
+
+            modalbox.forEach(modal => {
+                modal.addEventListener('click', closeModal);
             });
+
+            function closeModal(event) {
+                // Access the modal that was clicked
+                const clickedModal = event.currentTarget;
+
+                // Hide the clicked modal
+                clickedModal.style.display = 'none';
+            }
         });
     });
 }

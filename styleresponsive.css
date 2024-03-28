@@ -12,31 +12,31 @@
 
 @media only screen and (max-width: 1100px) {
     .zone-carte {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Defines two columns with equal width */
     }
 }
 
 @media only screen and (max-width: 1024px) {
     .zone-carte {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Defines two columns with equal width */
     }
 }
 
 @media only screen and (max-width: 950px) {
     .zone-carte {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Defines two columns with equal width */
     }
 }
 
 @media only screen and (max-width: 768px) {
     .zone-carte {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Defines two columns with equal width */
     }
 }
 
 @media only screen and (max-width: 700px) {
     .zone-carte {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Defines two columns with equal width and change the font size */
     }
     
     .btn {
@@ -44,7 +44,7 @@
     }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 650px) { /* change the font size of the title and buttons*/
     .btn {
         font-size: 2rem;
     }
@@ -55,11 +55,11 @@
 
 @media only screen and (max-width: 600px) {
     .zone-carte {
-        grid-template-columns: repeat(1, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+        grid-template-columns: repeat(1, minmax(0, 1fr)); /* Defines two columns with equal width */
     }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px) { /* change the font size */
     .title {
         font-size: 3rem;
         }
@@ -67,7 +67,7 @@
 
 @media only screen and (max-width: 425px) {
     .zone-carte {
-        grid-template-columns: repeat(1, minmax(0, 1fr)); /* Définit deux colonnes avec une largeur égale */
+        grid-template-columns: repeat(1, minmax(0, 1fr)); /* Defines two columns with equal width */
     }
 }
 
