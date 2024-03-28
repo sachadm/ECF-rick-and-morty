@@ -164,3 +164,11 @@ color: white;
   cursor: pointer;
 }
 
+#animationContainer {
+  position: absolute; /* Position fixe pour maintenir l'élément au centre de la fenêtre */
+  top: 80%; /* Déplacer l'élément vers le haut de 50% de la hauteur de la fenêtre */
+  left: 50%; /* Déplacer l'élément vers la gauche de 50% de la largeur de la fenêtre */
+  transform: translate(-50%, -50%); /* Translation de l'élément de moitié de sa propre largeur et hauteur vers le haut et la gauche */
+  display: none; /* Caché initialement */
+    
+}

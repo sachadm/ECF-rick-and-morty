@@ -85,7 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// fonction pour afficher 12 personnages aléatoire //
 
 async function getRandomCharacters(done) {
     const totalCharacters = 826; // Nombre total de personnages dans l'API
@@ -195,12 +198,43 @@ function handleRandomCharactersButtonClick() {
     });
 };
     
+function animateImages() {
+    var animationContainer = document.getElementById('animationContainer');
+    var images = animationContainer.getElementsByTagName('img');
+    var currentIndex = 0;
 
+    // Afficher le conteneur pendant l'animation
+    animationContainer.style.display = 'block';
+    // Cette fonction masque toutes les images
+    function hideAllImages() {
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.display = 'none';
+        }
+    }
+
+    // Cette fonction affiche l'image spécifiée par l'index et planifie l'affichage de la suivante
+    function showNextImage() {
+        if (currentIndex < images.length) {
+            hideAllImages(); // Masquer toutes les images avant d'afficher la suivante
+            images[currentIndex].style.display = 'block';
+            currentIndex++;
+            setTimeout(showNextImage, 100); // Ajustez le délai entre les images (en millisecondes)
+        } else {
+            // Une fois que toutes les images sont affichées, réinitialisez l'index et masquez-les à nouveau
+            currentIndex = 0;
+            hideAllImages();
+            animationContainer.style.display = 'none'; // Masquer le conteneur après la fin de l'animation
+        }
+    }
+
+    showNextImage();
+}
 
 const randomCharactersButton = document.getElementById("randomCharactersButton");
-randomCharactersButton.addEventListener("click", handleRandomCharactersButtonClick);
-
-
+randomCharactersButton.addEventListener("click", () => {
+    handleRandomCharactersButtonClick();
+    animateImages(); // Vous appelez simplement la fonction ici
+});
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // fonction pour afficher 12 personnages vivant aléatoire //
 
@@ -314,8 +348,43 @@ function handleRandomAliveCharactersButtonClick() {
     });
 }
 
+function animateImages() {
+    var animationContainer = document.getElementById('animationContainer');
+    var images = animationContainer.getElementsByTagName('img');
+    var currentIndex = 0;
+
+    // Afficher le conteneur pendant l'animation
+    animationContainer.style.display = 'block';
+
+    // Cette fonction masque toutes les images
+    function hideAllImages() {
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.display = 'none';
+        }
+    }
+
+    // Cette fonction affiche l'image spécifiée par l'index et planifie l'affichage de la suivante
+    function showNextImage() {
+        if (currentIndex < images.length) {
+            hideAllImages(); // Masquer toutes les images avant d'afficher la suivante
+            images[currentIndex].style.display = 'block';
+            currentIndex++;
+            setTimeout(showNextImage, 100); // Ajustez le délai entre les images (en millisecondes)
+        } else {
+            // Une fois que toutes les images sont affichées, réinitialisez l'index et masquez-les à nouveau
+            currentIndex = 0;
+            hideAllImages();
+            animationContainer.style.display = 'none'; // Masquer le conteneur après la fin de l'animation
+        }
+    }
+
+    showNextImage();
+}
+
 const randomAliveCharactersButton = document.getElementById("randomAliveCharactersButton");
-randomAliveCharactersButton.addEventListener("click", handleRandomAliveCharactersButtonClick);
+randomAliveCharactersButton.addEventListener("click", () => {handleRandomAliveCharactersButtonClick();
+    animateImages(); // Vous appelez simplement la fonction ici
+});
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -431,8 +500,43 @@ function handleRandomDeadCharactersButtonClick() {
     });
 }
 
+function animateImages() {
+    var animationContainer = document.getElementById('animationContainer');
+    var images = animationContainer.getElementsByTagName('img');
+    var currentIndex = 0;
+
+    // Afficher le conteneur pendant l'animation
+    animationContainer.style.display = 'block';
+
+    // Cette fonction masque toutes les images
+    function hideAllImages() {
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.display = 'none';
+        }
+    }
+
+    // Cette fonction affiche l'image spécifiée par l'index et planifie l'affichage de la suivante
+    function showNextImage() {
+        if (currentIndex < images.length) {
+            hideAllImages(); // Masquer toutes les images avant d'afficher la suivante
+            images[currentIndex].style.display = 'block';
+            currentIndex++;
+            setTimeout(showNextImage, 100); // Ajustez le délai entre les images (en millisecondes)
+        } else {
+            // Une fois que toutes les images sont affichées, réinitialisez l'index et masquez-les à nouveau
+            currentIndex = 0;
+            hideAllImages();
+            animationContainer.style.display = 'none'; // Masquer le conteneur après la fin de l'animation
+        }
+    }
+
+    showNextImage();
+}
+
 const randomDeadCharactersButton = document.getElementById("randomDeadCharactersButton");
-randomDeadCharactersButton.addEventListener("click", handleRandomDeadCharactersButtonClick);
+randomDeadCharactersButton.addEventListener("click", () => {handleRandomDeadCharactersButtonClick();
+    animateImages(); // Vous appelez simplement la fonction ici
+});
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -548,8 +652,44 @@ function handleRandomUnknownCharactersButtonClick() {
     });
 }
 
+function animateImages() {
+    var animationContainer = document.getElementById('animationContainer');
+    var images = animationContainer.getElementsByTagName('img');
+    var currentIndex = 0;
+
+    // Afficher le conteneur pendant l'animation
+    animationContainer.style.display = 'block';
+
+    // Cette fonction masque toutes les images
+    function hideAllImages() {
+        for (var i = 0; i < images.length; i++) {
+            images[i].style.display = 'none';
+        }
+    }
+
+    // Cette fonction affiche l'image spécifiée par l'index et planifie l'affichage de la suivante
+    function showNextImage() {
+        if (currentIndex < images.length) {
+            hideAllImages(); // Masquer toutes les images avant d'afficher la suivante
+            images[currentIndex].style.display = 'block';
+            currentIndex++;
+            setTimeout(showNextImage, 100); // Ajustez le délai entre les images (en millisecondes)
+        } else {
+            // Une fois que toutes les images sont affichées, réinitialisez l'index et masquez-les à nouveau
+            currentIndex = 0;
+            hideAllImages();
+            animationContainer.style.display = 'none'; // Masquer le conteneur après la fin de l'animation
+        }
+    }
+
+    showNextImage();
+}
+
 const randomUnknownCharactersButton = document.getElementById("randomUnknownCharactersButton");
-randomUnknownCharactersButton.addEventListener("click", handleRandomUnknownCharactersButtonClick);
+randomUnknownCharactersButton.addEventListener("click", () => {handleRandomUnknownCharactersButtonClick();
+    animateImages(); // Vous appelez simplement la fonction ici
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
