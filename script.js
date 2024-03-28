@@ -9,7 +9,9 @@ function getCharacters(done) {
         });
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
+    animateImages(); // Appeler animateImages() avant de récupérer les personnages
     getCharacters(data => {
         console.log(data);
         data.results.slice(0, 12).forEach(personnage => {
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             article.innerHTML = `
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage">      
+                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
                 </div>
                 <div class="name">
                     <h2>${personnage.name}</h2>
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="wrapper">
                     <div class="modal-content">
                         <div class="image-container">  
-                            <img src="${personnage.image}" alt="personnage">      
+                            <img src="${personnage.image}" alt="personnage" class="chara-img">      
                         </div>
                         <h2>${personnage.name}</h2>
                         <div class="stat-modale">
@@ -82,6 +84,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 clickedModal.style.display = 'none';
             }
         });
+        function animateImages() {
+            var animationContainer = document.getElementById('animationContainer');
+            var images = animationContainer.getElementsByTagName('img');
+            var currentIndex = 0;
+        
+            // Afficher le conteneur pendant l'animation
+            animationContainer.style.display = 'block';
+            // Cette fonction masque toutes les images
+            function hideAllImages() {
+                for (var i = 0; i < images.length; i++) {
+                    images[i].style.display = 'none';
+                }
+            }
+        
+            // Cette fonction affiche l'image spécifiée par l'index et planifie l'affichage de la suivante
+            function showNextImage() {
+                if (currentIndex < images.length) {
+                    hideAllImages(); // Masquer toutes les images avant d'afficher la suivante
+                    images[currentIndex].style.display = 'block';
+                    currentIndex++;
+                    setTimeout(showNextImage, 100); // Ajustez le délai entre les images (en millisecondes)
+                } else {
+                    // Une fois que toutes les images sont affichées, réinitialisez l'index et masquez-les à nouveau
+                    currentIndex = 0;
+                    hideAllImages();
+                    animationContainer.style.display = 'none'; // Masquer le conteneur après la fin de l'animation
+                }
+            }
+        
+            showNextImage();
+        }
     });
 });
 
@@ -134,7 +167,7 @@ function handleRandomCharactersButtonClick() {
 
             const articleContent = document.createRange().createContextualFragment(/*html*/`
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="${personnage.name}">      
+                    <img src="${personnage.image}" alt="${personnage.name}" class="chara-img">      
                 </div>
                 <h2>${personnage.name}</h2>
                 <div class="stat">
@@ -153,7 +186,7 @@ function handleRandomCharactersButtonClick() {
             <div class="wrapper">
             <div class="modal-content">
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage">      
+                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
                         </div>
                          <h2>${personnage.name}</h2>
                          <div class="stat-modale">
@@ -284,7 +317,7 @@ function handleRandomAliveCharactersButtonClick() {
 
             const articleContent = document.createRange().createContextualFragment(/*html*/`
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="${personnage.name}">      
+                    <img src="${personnage.image}" alt="${personnage.name}" class="chara-img">      
                 </div>
                 <h2>${personnage.name}</h2>
                 <div class="stat">
@@ -303,7 +336,7 @@ function handleRandomAliveCharactersButtonClick() {
             <div class="wrapper">
             <div class="modal-content">
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage">      
+                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
                         </div>
                          <h2>${personnage.name}</h2>
                          <div class="stat-modale">
@@ -436,7 +469,7 @@ function handleRandomDeadCharactersButtonClick() {
 
             const articleContent = document.createRange().createContextualFragment(/*html*/`
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="${personnage.name}">      
+                    <img src="${personnage.image}" alt="${personnage.name}" class="chara-img">      
                 </div>
                 <h2>${personnage.name}</h2>
                 <div class="stat">
@@ -455,7 +488,7 @@ function handleRandomDeadCharactersButtonClick() {
             <div class="wrapper">
             <div class="modal-content">
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage">      
+                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
                         </div>
                          <h2>${personnage.name}</h2>
                          <div class="stat-modale">
@@ -588,7 +621,7 @@ function handleRandomUnknownCharactersButtonClick() {
 
             const articleContent = document.createRange().createContextualFragment(/*html*/`
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="${personnage.name}">      
+                    <img src="${personnage.image}" alt="${personnage.name}" class="chara-img">      
                 </div>
                 <h2>${personnage.name}</h2>
                 <div class="stat">
@@ -607,7 +640,7 @@ function handleRandomUnknownCharactersButtonClick() {
             <div class="wrapper">
             <div class="modal-content">
                 <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage">      
+                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
                         </div>
                          <h2>${personnage.name}</h2>
                          <div class="stat-modale">
