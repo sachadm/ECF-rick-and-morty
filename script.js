@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.style.display = 'flex';
                 modal.style.justifyContent = 'center';
             });
-            // close the modal when clickinf the close button //
+            // close the modal when clicking the close button //
             closeModalBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
             });
