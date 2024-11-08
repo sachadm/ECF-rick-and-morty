@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
                          <span>location : ${personnage.location.name}</span>
-                         <span>episodes : ${personnage.episode.length}</span>
+                         <span>Seen in : ${personnage.episode.length} episodes</span>
                          <span class="close">&times;</span>
                         </div>
                     </div>
@@ -87,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clickedModal.style.display = 'none';
             }
         });
+
         function animateImages() {
             var animationContainer = document.getElementById('animationContainer');
             var images = animationContainer.getElementsByTagName('img');
@@ -198,7 +199,7 @@ function handleRandomCharactersButtonClick() {
                          <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
                          <span>location : ${personnage.location.name}</span>
-                         <span>episodes : ${personnage.episode.length}</span>
+                         <span>Seen in : ${personnage.episode.length} episodes</span>
                          <span class="close">&times;</span>
                         </div>
                 </div>
@@ -351,7 +352,7 @@ function handleRandomAliveCharactersButtonClick() {
                          <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
                          <span>location : ${personnage.location.name}</span>
-                         <span>episodes : ${personnage.episode.length}</span>
+                         <span>Seen in : ${personnage.episode.length} episodes</span>
                          <span class="close">&times;</span>
                         </div>
                 </div>
@@ -505,7 +506,7 @@ function handleRandomDeadCharactersButtonClick() {
                          <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
                          <span>location : ${personnage.location.name}</span>
-                         <span>episodes : ${personnage.episode.length}</span>
+                         <span>Seen in : ${personnage.episode.length} episodes</span>
                          <span class="close">&times;</span>
                         </div>
                 </div>
@@ -659,7 +660,7 @@ function handleRandomUnknownCharactersButtonClick() {
                          <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
                          <span>location :${personnage.location.name}</span>
-                         <span>episodes : ${personnage.episode.length}</span>
+                         <span>Seen in : ${personnage.episode.length} episodes</span>
                          <span class="close">&times;</span>
                         </div>
                 </div>
