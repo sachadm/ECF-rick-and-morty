@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
                          <span>location : ${personnage.location.name}</span>
-                         <span>Seen in : ${personnage.episode.length} episodes</span>
+                         <span>Seen in : ${personnage.episode.length} ${personnage.episode.length === 1 ? 'episode' : 'episodes'}</span>
                          <span class="close">&times;</span>
                         </div>
                     </div>
