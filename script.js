@@ -190,21 +190,21 @@ function handleRandomCharactersButtonClick() {
             const modal = document.createElement('div');
             modal.classList.add('modal'); // add the class "modal" to the modal //
             modal.innerHTML = `
-            <div class="wrapper"> 
-            <div class="modal-content">
-                <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
-                        </div>
-                         <h2>${personnage.name}</h2>
-                         <div class="stat-modale">
-                         <span>origin : ${personnage.origin.name}</span>
-                         <span>location : ${personnage.location.name}</span>
-                         <span>Seen in : ${personnage.episode.length} episodes</span>
-                         <span class="close">&times;</span>
-                        </div>
+            <div class="wrapper">
+                <div class="modal-content">
+                    <div class="image-container">  
+                        <img src="${personnage.image}" alt="personnage" class="chara-img">      
+                    </div>
+                    <h2>${personnage.name}</h2>
+                    <div class="stat-modale">
+                     <span>origin : ${personnage.origin.name}</span>
+                     <span>location : ${personnage.location.name}</span>
+                     <span>Seen in : ${personnage.episode.length} ${personnage.episode.length === 1 ? 'episode' : 'episodes'}</span>
+                     <span class="close">&times;</span>
+                    </div>
                 </div>
-          <div>
-            `;
+            </div>
+        `;
             main.appendChild(modal);
 
             // opening and closing logic for the modal //
@@ -343,20 +343,20 @@ function handleRandomAliveCharactersButtonClick() {
             const modal = document.createElement('div');
             modal.classList.add('modal'); // add the class "modal" the the modal //
             modal.innerHTML = `
-            <div class="wrapper">
-            <div class="modal-content">
-                <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
+                <div class="wrapper">
+                    <div class="modal-content">
+                        <div class="image-container">  
+                            <img src="${personnage.image}" alt="personnage" class="chara-img">      
                         </div>
-                         <h2>${personnage.name}</h2>
-                         <div class="stat-modale">
+                        <h2>${personnage.name}</h2>
+                        <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
                          <span>location : ${personnage.location.name}</span>
-                         <span>Seen in : ${personnage.episode.length} episodes</span>
+                         <span>Seen in : ${personnage.episode.length} ${personnage.episode.length === 1 ? 'episode' : 'episodes'}</span>
                          <span class="close">&times;</span>
                         </div>
+                    </div>
                 </div>
-          <div>
             `;
             main.appendChild(modal);
 
@@ -497,20 +497,20 @@ function handleRandomDeadCharactersButtonClick() {
             const modal = document.createElement('div');
             modal.classList.add('modal'); // Ajoutez la classe modal au modal
             modal.innerHTML = `
-            <div class="wrapper">
-            <div class="modal-content">
-                <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
+                <div class="wrapper">
+                    <div class="modal-content">
+                        <div class="image-container">  
+                            <img src="${personnage.image}" alt="personnage" class="chara-img">      
                         </div>
-                         <h2>${personnage.name}</h2>
-                         <div class="stat-modale">
+                        <h2>${personnage.name}</h2>
+                        <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
                          <span>location : ${personnage.location.name}</span>
-                         <span>Seen in : ${personnage.episode.length} episodes</span>
+                         <span>Seen in : ${personnage.episode.length} ${personnage.episode.length === 1 ? 'episode' : 'episodes'}</span>
                          <span class="close">&times;</span>
                         </div>
+                    </div>
                 </div>
-          <div>
             `;
             main.appendChild(modal);
 
@@ -586,7 +586,7 @@ randomDeadCharactersButton.addEventListener("click", () => {
 });
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 // Function to randomly display 12 characters with the status unkwnown //
 
 async function getRandomUnknownCharacters(done) {
@@ -651,20 +651,20 @@ function handleRandomUnknownCharactersButtonClick() {
             const modal = document.createElement('div');
             modal.classList.add('modal'); // add the class "modal" to the modal //
             modal.innerHTML = `
-            <div class="wrapper">
-            <div class="modal-content">
-                <div class="image-container">  
-                    <img src="${personnage.image}" alt="personnage" class="chara-img">      
+                <div class="wrapper">
+                    <div class="modal-content">
+                        <div class="image-container">  
+                            <img src="${personnage.image}" alt="personnage" class="chara-img">      
                         </div>
-                         <h2>${personnage.name}</h2>
-                         <div class="stat-modale">
+                        <h2>${personnage.name}</h2>
+                        <div class="stat-modale">
                          <span>origin : ${personnage.origin.name}</span>
-                         <span>location :${personnage.location.name}</span>
-                         <span>Seen in : ${personnage.episode.length} episodes</span>
+                         <span>location : ${personnage.location.name}</span>
+                         <span>Seen in : ${personnage.episode.length} ${personnage.episode.length === 1 ? 'episode' : 'episodes'}</span>
                          <span class="close">&times;</span>
                         </div>
+                    </div>
                 </div>
-          <div>
             `;
             main.appendChild(modal);
 
